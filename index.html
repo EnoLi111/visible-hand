@@ -2,715 +2,352 @@
 <html lang="en">
 
 <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gender Equity Project</title>
 
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
 
-<title>Women in Precarious Work</title>
-
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Cormorant+Garamond:wght@400;500;600;700&display=swap" rel="stylesheet">
-
-<style>
-
-*{
-    margin:0;
-    padding:0;
-    box-sizing:border-box;
-}
-
-html{
-    scroll-behavior:smooth;
-}
-
-body{
-
-    font-family:'Inter',sans-serif;
-
-    background:#efe7df;
-
-    color:#111;
-
-    overflow-x:hidden;
-
-}
-
-nav{
-
-    position:fixed;
-
-    top:0;
-    left:0;
-
-    width:100%;
-
-    padding:28px 7%;
-
-    display:flex;
-    justify-content:space-between;
-    align-items:center;
-
-    z-index:999;
-
-    background:rgba(239,231,223,0.84);
-
-    backdrop-filter:blur(14px);
-
-}
-
-.logo{
-
-    font-size:1.3rem;
-
-    font-weight:600;
-
-}
-
-nav ul{
-
-    display:flex;
-
-    gap:50px;
-
-    list-style:none;
-
-}
-
-nav a{
-
-    text-decoration:none;
-
-    color:#111;
-
-    font-size:0.95rem;
-
-}
-
-.hero{
-
-    min-height:100vh;
-
-    display:grid;
-
-    grid-template-columns:1.2fr 1fr;
-
-    align-items:center;
-
-    padding:170px 7% 120px;
-
-    gap:80px;
-
-    position:relative;
-
-}
-
-.hero::before{
-
-    content:"";
-
-    position:absolute;
-
-    width:500px;
-    height:500px;
-
-    background:#d8cbff;
-
-    border-radius:50%;
-
-    filter:blur(120px);
-
-    right:-120px;
-    top:-100px;
-
-    opacity:0.5;
-
-}
-
-.hero-left{
-
-    position:relative;
-
-    z-index:2;
-
-}
-
-.hero-left h1{
-
-    font-family:'Cormorant Garamond',serif;
-
-    font-size:8vw;
-
-    line-height:0.9;
-
-    font-weight:600;
-
-    letter-spacing:-4px;
-
-}
-
-.hero-left span{
-
-    color:#6d50ff;
-
-    font-style:italic;
-
-}
-
-.hero-left p{
-
-    margin-top:40px;
-
-    max-width:540px;
-
-    font-size:1.1rem;
-
-    line-height:2;
-
-    color:#444;
-
-}
-
-.hero-image img{
-
-    width:100%;
-
-    border-radius:35px;
-
-    object-fit:cover;
-
-    box-shadow:0 30px 80px rgba(0,0,0,0.08);
-
-    transition:1s ease;
-
-}
-
-.statement{
-
-    padding:180px 7%;
-
-}
-
-.statement h2{
-
-    font-family:'Cormorant Garamond',serif;
-
-    font-size:6vw;
-
-    line-height:1;
-
-    max-width:1000px;
-
-}
-
-.process-section{
-
-    padding:160px 7%;
-
-    background:#9b003e;
-
-    color:white;
-
-}
-
-.process-title{
-
-    font-family:'Cormorant Garamond',serif;
-
-    font-size:5vw;
-
-    margin-bottom:60px;
-
-}
-
-.process-card{
-
-    background:#f5f1ee;
-
-    color:#111;
-
-    border-radius:40px;
-
-    padding:70px;
-
-    display:grid;
-
-    grid-template-columns:1fr 1fr;
-
-    gap:70px;
-
-    align-items:center;
-
-    transition:0.4s ease;
-
-}
-
-.process-content h3{
-
-    font-family:'Cormorant Garamond',serif;
-
-    font-size:4vw;
-
-    margin-bottom:25px;
-
-    line-height:1;
-
-}
-
-.process-content h3 span{
-
-    color:#6d50ff;
-
-}
-
-.process-content p{
-
-    line-height:2;
-
-    color:#444;
-
-    max-width:500px;
-
-}
-
-.process-image img{
-
-    width:100%;
-
-    border-radius:30px;
-
-    transition:0.5s ease;
-
-}
-
-.tabs{
-
-    margin-top:35px;
-
-    display:flex;
-
-}
-
-.tab-button{
-
-    flex:1;
-
-    padding:24px;
-
-    border:none;
-
-    cursor:pointer;
-
-    font-size:1rem;
-
-    font-weight:600;
-
-    color:white;
-
-    transition:0.3s ease;
-
-}
-
-.tab-button:nth-child(1){
-
-    background:#c4005c;
-
-}
-
-.tab-button:nth-child(2){
-
-    background:#006d6a;
-
-}
-
-.tab-button:nth-child(3){
-
-    background:#5d84db;
-
-}
-
-.tab-content{
-
-    display:none;
-
-}
-
-.tab-content.active{
-
-    display:block;
-
-}
-
-.methods{
-
-    padding:170px 0 170px 7%;
-
-}
-
-.methods-title{
-
-    font-family:'Cormorant Garamond',serif;
-
-    font-size:5vw;
-
-    margin-bottom:60px;
-
-}
-
-.methods-slider{
-
-    display:flex;
-
-    gap:35px;
-
-    overflow-x:auto;
-
-    scroll-snap-type:x mandatory;
-
-    padding-bottom:20px;
-
-}
-
-.method-card{
-
-    min-width:420px;
-
-    background:#f5f1ee;
-
-    border-radius:35px;
-
-    overflow:hidden;
-
-    transition:0.4s ease;
-
-    scroll-snap-align:start;
-
-}
-
-.method-card:hover{
-
-    transform:translateY(-15px);
-
-}
-
-.method-card img{
-
-    width:100%;
-
-    height:320px;
-
-    object-fit:cover;
-
-}
-
-.method-content{
-
-    padding:35px;
-
-}
-
-.method-content span{
-
-    font-size:0.8rem;
-
-    letter-spacing:2px;
-
-    text-transform:uppercase;
-
-    color:#777;
-
-}
-
-.method-content h3{
-
-    font-family:'Cormorant Garamond',serif;
-
-    font-size:2.3rem;
-
-    margin:20px 0;
-
-}
-
-.method-content p{
-
-    line-height:1.9;
-
-    color:#444;
-
-}
-
-.quote{
-
-    padding:220px 7%;
-
-    text-align:center;
-
-}
-
-.quote h2{
-
-    font-family:'Cormorant Garamond',serif;
-
-    font-size:5vw;
-
-    line-height:1;
-
-}
-
-footer{
-
-    padding:70px 7%;
-
-    border-top:1px solid rgba(0,0,0,0.08);
-
-}
-
-footer p{
-
-    color:#666;
-
-}
-
-.fade-up{
-
-    opacity:0;
-
-    transform:translateY(80px);
-
-    transition:1.2s ease;
-
-}
-
-.fade-up.active{
-
-    opacity:1;
-
-    transform:translateY(0);
-
-}
-
-@media(max-width:1000px){
-
-.hero{
-
-    grid-template-columns:1fr;
-
-}
-
-.process-card{
-
-    grid-template-columns:1fr;
-
-}
-
-.hero-left h1{
-
-    font-size:16vw;
-
-}
-
-.statement h2,
-.process-title,
-.methods-title,
-.quote h2{
-
-    font-size:12vw;
-
-}
-
-.process-content h3{
-
-    font-size:10vw;
-
-}
-
-}
-
-</style>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
 
 </head>
 
 <body>
 
-<nav>
-<div class="logo">Gender Equity</div>
-<ul>
-<li><a href="#">About</a></li>
-<li><a href="#">Process</a></li>
-<li><a href="#">Methods</a></li>
-</ul>
-</nav>
 
-<section class="hero">
-<div class="hero-left fade-up">
-<h1>
-Who gets<br>
-<span>left out?</span>
-</h1>
-<p>
-Exploring the gendered impact of precarious work through digital storytelling, feminist research, and intervention design.
-</p>
-</div>
-<div class="hero-image">
-<img id="heroImage" src="https://images.unsplash.com/photo-1524504388940-b1c1722653e1?q=80&w=1200&auto=format&fit=crop">
-</div>
-</section>
+    <!-- NAVIGATION -->
 
-<section class="statement fade-up">
-<h2>
-Invisible labour.<br>
-Unpaid labour.<br>
-Precarious labour.
-</h2>
-</section>
+    <nav>
 
-<section class="process-section">
-<h2 class="process-title">Our Process</h2>
-<div class="process-card" id="processCard">
-<div class="process-content">
-<div class="tab-content active" id="tab1">
-<h3><span>1.</span> Research</h3>
-<p>
-We explored feminist studies, labour reports, and workplace inequality research surrounding precarious employment and gendered emotional labour.
-</p>
-</div>
-<div class="tab-content" id="tab2">
-<h3><span>2.</span> Analysis</h3>
-<p>
-Through thematic analysis, we identified patterns of invisible labour, unstable income, emotional burden, and unequal workplace expectations.
-</p>
-</div>
-<div class="tab-content" id="tab3">
-<h3><span>3.</span> Intervention</h3>
-<p>
-Our intervention uses digital storytelling and visual communication to raise awareness about gender inequality in precarious labour systems.
-</p>
-</div>
-</div>
-<div class="process-image">
-<img id="processImage" src="https://images.unsplash.com/photo-1516321318423-f06f85e504b3?q=80&w=1200&auto=format&fit=crop">
-</div>
-</div>
-<div class="tabs">
-<button class="tab-button active" data-tab="1">Research</button>
-<button class="tab-button" data-tab="2">Analysis</button>
-<button class="tab-button" data-tab="3">Intervention</button>
-</div>
-</section>
+        <div class="logo">
+            Gender Equity
+        </div>
 
-<section class="methods fade-up">
-<h2 class="methods-title">Research Methods</h2>
-<div class="methods-slider">
-<div class="method-card">
-<img src="https://images.unsplash.com/photo-1521791136064-7986c2920216?q=80&w=1200&auto=format&fit=crop">
-<div class="method-content">
-<span>Method</span>
-<h3>Case Studies</h3>
-<p>
-Investigating real examples of workplace inequality and insecure labour systems affecting women workers.
-</p>
-</div>
-</div>
-<div class="method-card">
-<img src="https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?q=80&w=1200&auto=format&fit=crop">
-<div class="method-content">
-<span>Method</span>
-<h3>Policy Analysis</h3>
-<p>
-Reviewing labour protections, workplace structures, and feminist workplace policy frameworks.
-</p>
-</div>
-</div>
-<div class="method-card">
-<img src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?q=80&w=1200&auto=format&fit=crop">
-<div class="method-content">
-<span>Method</span>
-<h3>Feminist Perspectives</h3>
-<p>
-Understanding emotional labour, social expectations, and invisible work through feminist theory.
-</p>
-</div>
-</div>
-</div>
-</section>
+        <ul>
 
-<section class="quote fade-up">
-<h2>
-Gender inequality in precarious work is not an individual issue — it is structural.
-</h2>
-</section>
+            <li><a href="#about">About</a></li>
+            <li><a href="#process">Process</a></li>
+            <li><a href="#methods">Methods</a></li>
 
-<footer>
-<p>
-FASS3999 Gender Intervention Project
-</p>
-</footer>
+        </ul>
 
-<script>
+    </nav>
 
-const fadeElements = document.querySelectorAll('.fade-up');
 
-const observer = new IntersectionObserver((entries)=>{
-entries.forEach((entry)=>{
-if(entry.isIntersecting){
-entry.target.classList.add('active');
-}
-});
-},{threshold:0.15});
 
-fadeElements.forEach((element)=>{
-observer.observe(element);
-});
 
-const heroImage = document.getElementById('heroImage');
+    <!-- HERO SECTION -->
 
-window.addEventListener('scroll',()=>{
-let scrollY = window.scrollY;
-heroImage.style.transform = `translateY(${scrollY * -0.08}px)`;
-});
+    <section class="hero" id="about">
 
-const tabButtons = document.querySelectorAll('.tab-button');
-const tabContents = document.querySelectorAll('.tab-content');
-const processImage = document.getElementById('processImage');
+        <div class="hero-left fade-up">
 
-const images = {
-1:'https://images.unsplash.com/photo-1516321318423-f06f85e504b3?q=80&w=1200&auto=format&fit=crop',
-2:'https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?q=80&w=1200&auto=format&fit=crop',
-3:'https://images.unsplash.com/photo-1522202176988-66273c2fd55f?q=80&w=1200&auto=format&fit=crop'
-};
+            <p class="small-text">
+                Workplace inequality still shapes the lives of many women around the world.
+            </p>
 
-tabButtons.forEach((button)=>{
-button.addEventListener('click',()=>{
-const tab = button.dataset.tab;
-tabButtons.forEach((btn)=>{btn.classList.remove('active');});
-tabContents.forEach((content)=>{content.classList.remove('active');});
-button.classList.add('active');
-document.getElementById(`tab${tab}`).classList.add('active');
-processImage.style.opacity = '0';
-setTimeout(()=>{
-processImage.src = images[tab];
-processImage.style.opacity = '1';
-},250);
-});
-});
+            <h1>
+                Building safer<br>
+                futures for women<br>
+                in precarious work.
+            </h1>
 
-const progressBar = document.createElement('div');
-progressBar.style.position = 'fixed';
-progressBar.style.top = '0';
-progressBar.style.left = '0';
-progressBar.style.height = '4px';
-progressBar.style.width = '0%';
-progressBar.style.background = '#6d50ff';
-progressBar.style.zIndex = '9999';
-document.body.appendChild(progressBar);
+            <p class="hero-description">
+                This project explores how gender inequality, emotional labour,
+                and unstable employment conditions impact women workers.
+                Through research and visual storytelling, we aim to create awareness
+                and inspire structural change.
+            </p>
 
-window.addEventListener('scroll',()=>{
-const scrollTop = window.scrollY;
-const docHeight = document.body.scrollHeight - window.innerHeight;
-const progress = (scrollTop / docHeight) * 100;
-progressBar.style.width = progress + '%';
-});
+        </div>
 
-</script>
+
+
+        <!-- RIGHT SIDE COLLAGE -->
+
+        <div class="hero-right fade-up">
+
+            <div class="office-scene">
+
+                <img src="https://images.unsplash.com/photo-1521737604893-d14cc237f11d?q=80&w=1200&auto=format&fit=crop"
+                    class="office-image">
+
+                <div class="ribbon ribbon-one"></div>
+                <div class="ribbon ribbon-two"></div>
+
+                <div class="floating-card">
+
+                    <h3>Women at Work</h3>
+
+                    <p>
+                        Emotional burden, invisible labour,
+                        unstable contracts and workplace inequality.
+                    </p>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+
+
+
+    <!-- PROCESS SECTION -->
+
+    <section class="process-section" id="process">
+
+        <h2 class="section-title fade-up">
+            Our Process
+        </h2>
+
+        <div class="process-container fade-up">
+
+            <!-- TAB 1 -->
+
+            <div class="process-card active" id="research">
+
+                <div class="process-text">
+
+                    <span class="number">1</span>
+
+                    <h3>Research</h3>
+
+                    <p>
+                        We explored feminist theory, academic journals,
+                        policy reports and case studies surrounding
+                        precarious labour and gender inequality.
+                    </p>
+
+                </div>
+
+                <div class="process-image">
+
+                    <img src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?q=80&w=1200&auto=format&fit=crop">
+
+                </div>
+
+            </div>
+
+
+
+            <!-- TAB 2 -->
+
+            <div class="process-card" id="analysis">
+
+                <div class="process-text">
+
+                    <span class="number">2</span>
+
+                    <h3>Analysis</h3>
+
+                    <p>
+                        We analysed the emotional and social effects
+                        of unstable employment on women workers,
+                        especially within patriarchal systems.
+                    </p>
+
+                </div>
+
+                <div class="process-image">
+
+                    <img src="https://images.unsplash.com/photo-1521791136064-7986c2920216?q=80&w=1200&auto=format&fit=crop">
+
+                </div>
+
+            </div>
+
+
+
+            <!-- TAB 3 -->
+
+            <div class="process-card" id="intervention">
+
+                <div class="process-text">
+
+                    <span class="number">3</span>
+
+                    <h3>Intervention</h3>
+
+                    <p>
+                        We transformed our research into
+                        an interactive digital intervention
+                        designed to communicate workplace inequality
+                        through design and storytelling.
+                    </p>
+
+                </div>
+
+                <div class="process-image">
+
+                    <img src="https://images.unsplash.com/photo-1516321318423-f06f85e504b3?q=80&w=1200&auto=format&fit=crop">
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+
+        <!-- BUTTONS -->
+
+        <div class="process-buttons">
+
+            <button onclick="showTab('research', this)" class="active-btn">
+                Research
+            </button>
+
+            <button onclick="showTab('analysis', this)">
+                Analysis
+            </button>
+
+            <button onclick="showTab('intervention', this)">
+                Intervention
+            </button>
+
+        </div>
+
+    </section>
+
+
+
+
+
+
+    <!-- METHODS SLIDER -->
+
+    <section class="methods-section" id="methods">
+
+        <div class="methods-header fade-up">
+
+            <h2>Methods & Findings</h2>
+
+            <p>
+                Scroll horizontally to explore our research themes.
+            </p>
+
+        </div>
+
+
+
+        <div class="slider-wrapper">
+
+            <div class="methods-slider">
+
+                <!-- CARD 1 -->
+
+                <div class="method-card">
+
+                    <img src="https://images.unsplash.com/photo-1521791136064-7986c2920216?q=80&w=1200&auto=format&fit=crop">
+
+                    <div class="method-content">
+
+                        <span>Research</span>
+
+                        <h3>
+                            Gendered emotional labour
+                            in precarious workplaces.
+                        </h3>
+
+                    </div>
+
+                </div>
+
+
+
+
+                <!-- CARD 2 -->
+
+                <div class="method-card">
+
+                    <img src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?q=80&w=1200&auto=format&fit=crop">
+
+                    <div class="method-content">
+
+                        <span>Case Study</span>
+
+                        <h3>
+                            Women balancing unstable work
+                            and caregiving responsibilities.
+                        </h3>
+
+                    </div>
+
+                </div>
+
+
+
+
+                <!-- CARD 3 -->
+
+                <div class="method-card">
+
+                    <img src="https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?q=80&w=1200&auto=format&fit=crop">
+
+                    <div class="method-content">
+
+                        <span>Policy</span>
+
+                        <h3>
+                            Why institutional support
+                            remains insufficient for women workers.
+                        </h3>
+
+                    </div>
+
+                </div>
+
+
+
+
+                <!-- CARD 4 -->
+
+                <div class="method-card">
+
+                    <img src="https://images.unsplash.com/photo-1497366754035-f200968a6e72?q=80&w=1200&auto=format&fit=crop">
+
+                    <div class="method-content">
+
+                        <span>Intervention</span>
+
+                        <h3>
+                            Building awareness through
+                            interactive digital storytelling.
+                        </h3>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+
+
+
+    <!-- FOOTER -->
+
+    <footer>
+
+        <p>
+            Gender Equity Project — FASS3999
+        </p>
+
+    </footer>
+
+
+
+    <script src="script.js"></script>
 
 </body>
+
 </html>
