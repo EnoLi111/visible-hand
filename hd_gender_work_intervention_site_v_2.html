@@ -1,0 +1,528 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Who Gets Left Out?</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
+
+  <style>
+
+    *{
+      margin:0;
+      padding:0;
+      box-sizing:border-box;
+      scroll-behavior:smooth;
+    }
+
+    body{
+      background:#f8f4f1;
+      color:#1e1e1e;
+      font-family:'Inter',sans-serif;
+      overflow-x:hidden;
+    }
+
+    h1,h2,h3{
+      font-family:'Playfair Display',serif;
+      font-weight:700;
+    }
+
+    nav{
+      position:fixed;
+      width:100%;
+      top:0;
+      z-index:999;
+      background:rgba(248,244,241,0.92);
+      backdrop-filter:blur(12px);
+      padding:20px 8%;
+      border-bottom:1px solid rgba(0,0,0,0.06);
+    }
+
+    nav ul{
+      display:flex;
+      justify-content:center;
+      gap:40px;
+      list-style:none;
+      flex-wrap:wrap;
+    }
+
+    nav a{
+      text-decoration:none;
+      color:#222;
+      font-size:0.95rem;
+      letter-spacing:1px;
+      text-transform:uppercase;
+      transition:0.3s ease;
+    }
+
+    nav a:hover{
+      color:#9d6d5b;
+    }
+
+    .hero{
+      height:100vh;
+      background:
+      linear-gradient(rgba(0,0,0,0.45),rgba(0,0,0,0.45)),
+      url('https://images.unsplash.com/photo-1521791136064-7986c2920216?q=80&w=1600&auto=format&fit=crop');
+      background-size:cover;
+      background-position:center;
+      display:flex;
+      justify-content:center;
+      align-items:center;
+      text-align:center;
+      color:white;
+      padding:0 8%;
+    }
+
+    .hero-content{
+      max-width:950px;
+      animation:fadeIn 1.8s ease;
+    }
+
+    .hero h1{
+      font-size:6rem;
+      line-height:0.95;
+      margin-bottom:30px;
+    }
+
+    .hero p{
+      font-size:1.3rem;
+      line-height:1.8;
+      margin-bottom:40px;
+      opacity:0.92;
+    }
+
+    .btn{
+      display:inline-block;
+      padding:16px 34px;
+      border-radius:50px;
+      background:white;
+      color:#111;
+      text-decoration:none;
+      font-weight:600;
+      transition:0.4s ease;
+    }
+
+    .btn:hover{
+      transform:translateY(-4px);
+      background:#ead9d1;
+    }
+
+    section{
+      padding:120px 10%;
+    }
+
+    .section-title{
+      font-size:4rem;
+      margin-bottom:30px;
+      line-height:1.1;
+    }
+
+    .section-text{
+      font-size:1.15rem;
+      line-height:2;
+      max-width:900px;
+      margin-bottom:60px;
+      color:#3a3a3a;
+    }
+
+    .editorial-text{
+      font-size:4rem;
+      line-height:1.15;
+      max-width:900px;
+      margin-bottom:50px;
+      color:#1e1e1e;
+      font-family:'Playfair Display',serif;
+    }
+
+    .grid{
+      display:grid;
+      grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
+      gap:30px;
+      margin-top:40px;
+    }
+
+    .card{
+      background:white;
+      padding:40px;
+      border-radius:26px;
+      box-shadow:0 12px 40px rgba(0,0,0,0.05);
+      transition:0.4s ease;
+    }
+
+    .card:hover{
+      transform:translateY(-8px);
+    }
+
+    .card h3{
+      margin-bottom:18px;
+      font-size:1.6rem;
+      color:#8f5f4f;
+    }
+
+    .split{
+      display:grid;
+      grid-template-columns:1fr 1fr;
+      gap:80px;
+      align-items:center;
+    }
+
+    .split img{
+      width:100%;
+      border-radius:30px;
+      object-fit:cover;
+      min-height:500px;
+      box-shadow:0 20px 50px rgba(0,0,0,0.08);
+    }
+
+    .quote-section{
+      background:#e8d8d0;
+      text-align:center;
+      padding:140px 10%;
+    }
+
+    .quote{
+      font-size:3rem;
+      line-height:1.5;
+      max-width:1000px;
+      margin:auto;
+      font-family:'Playfair Display',serif;
+      color:#503c34;
+    }
+
+    .stats{
+      display:grid;
+      grid-template-columns:repeat(auto-fit,minmax(240px,1fr));
+      gap:30px;
+      margin-top:60px;
+    }
+
+    .stat-box{
+      background:white;
+      padding:50px 30px;
+      text-align:center;
+      border-radius:24px;
+      box-shadow:0 10px 30px rgba(0,0,0,0.05);
+    }
+
+    .stat-box h2{
+      font-size:4rem;
+      color:#9d6d5b;
+      margin-bottom:10px;
+    }
+
+    footer{
+      background:#1e1e1e;
+      color:white;
+      padding:100px 10%;
+    }
+
+    footer h2{
+      font-size:3rem;
+      margin-bottom:30px;
+    }
+
+    footer p{
+      line-height:2;
+      max-width:900px;
+      opacity:0.9;
+    }
+
+    .references{
+      margin-top:50px;
+      font-size:0.95rem;
+      opacity:0.8;
+    }
+
+    @keyframes fadeIn{
+      from{
+        opacity:0;
+        transform:translateY(20px);
+      }
+
+      to{
+        opacity:1;
+        transform:translateY(0);
+      }
+    }
+
+    @media(max-width:900px){
+
+      .hero h1{
+        font-size:3.5rem;
+      }
+
+      .section-title{
+        font-size:2.8rem;
+      }
+
+      .editorial-text{
+        font-size:2.6rem;
+      }
+
+      .split{
+        grid-template-columns:1fr;
+      }
+
+      .quote{
+        font-size:2rem;
+      }
+
+    }
+
+  </style>
+</head>
+
+<body>
+
+<nav>
+  <ul>
+    <li><a href="#problem">The Problem</a></li>
+    <li><a href="#gap">The Gap</a></li>
+    <li><a href="#intervention">Intervention</a></li>
+    <li><a href="#action">Action</a></li>
+  </ul>
+</nav>
+
+<section class="hero">
+  <div class="hero-content">
+
+    <h1>
+      WHO GETS<br>
+      LEFT OUT?
+    </h1>
+
+    <p>
+      Workplace equality policies often fail the workers most affected by precarious labour. This digital intervention explores how gendered precarious work continues to shape inequality, invisibility, and exclusion within labour systems.
+    </p>
+
+    <a href="#problem" class="btn">Explore the Project</a>
+
+  </div>
+</section>
+
+<section id="problem">
+
+  <h2 class="section-title">The Invisible Workforce</h2>
+
+  <div class="editorial-text">
+    Casual workers.<br>
+    Part-time workers.<br>
+    Carers.<br>
+    Invisible labour.
+  </div>
+
+  <p class="section-text">
+    Women are disproportionately affected by precarious forms of employment including casual work, insecure contracts, part-time employment, and unpaid caring responsibilities. These labour structures contribute to lower wages, reduced job security, limited career progression, and long-term financial instability.
+  </p>
+
+  <div class="grid">
+
+    <div class="card">
+      <h3>Lower Income</h3>
+      <p>
+        Precarious labour often results in unstable and inconsistent income, reducing long-term financial security for women workers.
+      </p>
+    </div>
+
+    <div class="card">
+      <h3>Job Insecurity</h3>
+      <p>
+        Casual and temporary employment structures create uncertainty and increase vulnerability within labour systems.
+      </p>
+    </div>
+
+    <div class="card">
+      <h3>Care Burden</h3>
+      <p>
+        Women continue to carry disproportionate unpaid caring responsibilities, limiting workforce participation and progression.
+      </p>
+    </div>
+
+    <div class="card">
+      <h3>Structural Inequality</h3>
+      <p>
+        Workplace equality policies remain unevenly implemented across industries and organisational cultures.
+      </p>
+    </div>
+
+  </div>
+
+</section>
+
+<section>
+
+  <div class="split">
+
+    <div>
+      <h2 class="section-title">Why This Matters</h2>
+
+      <p class="section-text">
+        Despite increasing public conversations around workplace equality, many support systems continue to rely heavily on formal employment structures. Workers in precarious positions are often the least likely to access organisational support, professional development, or workplace flexibility.
+      </p>
+
+      <div class="stats">
+
+        <div class="stat-box">
+          <h2>Gender</h2>
+          <p>Workplace inequality remains embedded within labour systems.</p>
+        </div>
+
+        <div class="stat-box">
+          <h2>Care</h2>
+          <p>Unpaid care work continues to shape workforce inequality.</p>
+        </div>
+
+      </div>
+
+    </div>
+
+    <img src="https://images.unsplash.com/photo-1521737604893-d14cc237f11d?q=80&w=1200&auto=format&fit=crop" alt="Women at work">
+
+  </div>
+
+</section>
+
+<section id="gap" style="background:#efe2dc;">
+
+  <h2 class="section-title">The Structural Gap</h2>
+
+  <p class="section-text">
+    Our research identified a structural mismatch between existing workplace equity programs and the workers most affected by precarious employment.
+  </p>
+
+  <div class="grid">
+
+    <div class="card">
+      <h3>Employer-Based Systems</h3>
+      <p>
+        Grace Papers primarily works through employer partnerships, leadership coaching, and organisational advisory support.
+      </p>
+    </div>
+
+    <div class="card">
+      <h3>Limited Accessibility</h3>
+      <p>
+        Workers outside formal workplace systems are often excluded from support structures and workplace resources.
+      </p>
+    </div>
+
+    <div class="card">
+      <h3>Invisible Exclusion</h3>
+      <p>
+        Those most affected by gendered precarious work may be the least visible within workplace equality initiatives.
+      </p>
+    </div>
+
+  </div>
+
+</section>
+
+<section id="intervention">
+
+  <h2 class="section-title">Beyond Corporate Equality</h2>
+
+  <p class="section-text">
+    This intervention proposes expanding workplace equality initiatives beyond corporate consultation models. Structural inequality cannot be addressed through organisational reform alone — broader social systems and community engagement must also be considered.
+  </p>
+
+  <div class="grid">
+
+    <div class="card">
+      <h3>Expand Accessibility</h3>
+      <p>
+        Increase access to support through more community-based and in-person services.
+      </p>
+    </div>
+
+    <div class="card">
+      <h3>Broaden Partnerships</h3>
+      <p>
+        Collaborate with NGOs, unions, and community organisations to reach vulnerable workers.
+      </p>
+    </div>
+
+    <div class="card">
+      <h3>Public Advocacy</h3>
+      <p>
+        Advocate for governments and policymakers to adopt stronger labour protections and gender-responsive reforms.
+      </p>
+    </div>
+
+    <div class="card">
+      <h3>Structural Change</h3>
+      <p>
+        Address the broader cultural and social systems shaping gendered labour inequality.
+      </p>
+    </div>
+
+  </div>
+
+</section>
+
+<section class="quote-section">
+
+  <div class="quote">
+    “Gender inequality in precarious work cannot be solved through individual resilience alone. Structural change requires collective responsibility.”
+  </div>
+
+</section>
+
+<section id="action">
+
+  <h2 class="section-title">Equality Must Reach Everyone</h2>
+
+  <p class="section-text">
+    Addressing gendered precarious work requires collaboration between employers, policymakers, organisations, and communities. Awareness alone is not enough — meaningful structural change must follow.
+  </p>
+
+  <div class="grid">
+
+    <div class="card">
+      <h3>For Employers</h3>
+      <p>
+        Build inclusive workplace systems that support flexibility, progression, and accessibility for all workers.
+      </p>
+    </div>
+
+    <div class="card">
+      <h3>For Policymakers</h3>
+      <p>
+        Strengthen labour protections and support gender-responsive workplace reforms.
+      </p>
+    </div>
+
+    <div class="card">
+      <h3>For Communities</h3>
+      <p>
+        Support advocacy initiatives and amplify discussions surrounding gender equity and labour rights.
+      </p>
+    </div>
+
+  </div>
+
+</section>
+
+<footer>
+
+  <h2>About This Project</h2>
+
+  <p>
+    This digital intervention was developed as part of a Gender at Work project in collaboration with Grace Papers. The website translates academic research into a public-facing awareness and advocacy platform exploring the structural inequalities of gendered precarious work.
+  </p>
+
+  <div class="references">
+
+    <p>
+      References include Connell (1990), Goldin (2014), Horler & Joffe (2022), Paraskevopoulou (2020), and WGEA reports (2025–2026).
+    </p>
+
+  </div>
+
+</footer>
+
+</body>
+</html>
