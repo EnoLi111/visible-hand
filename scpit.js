@@ -1,14 +1,34 @@
-// ===============================
-// ADVANCED INTERACTIVE WEBSITE
-// Gender Equality Project
-// ===============================
+/* =========================
+NAVBAR SCROLL EFFECT
+========================= */
+
+const nav = document.querySelector("nav");
+
+window.addEventListener("scroll", () => {
+
+    if(window.scrollY > 50){
+
+        nav.style.padding = "18px 7%";
+        nav.style.background = "rgba(255,255,255,0.9)";
+        nav.style.boxShadow = "0 5px 25px rgba(0,0,0,0.08)";
+
+    } else {
+
+        nav.style.padding = "28px 7%";
+        nav.style.background = "rgba(239,231,223,0.82)";
+        nav.style.boxShadow = "none";
+
+    }
+
+});
 
 
-// ===============================
-// FADE UP ANIMATION
-// ===============================
 
-const fadeElements = document.querySelectorAll('.fade-up');
+/* =========================
+FADE UP ANIMATION
+========================= */
+
+const fadeElements = document.querySelectorAll(".fade-up");
 
 const observer = new IntersectionObserver((entries) => {
 
@@ -16,59 +36,56 @@ const observer = new IntersectionObserver((entries) => {
 
         if(entry.isIntersecting){
 
-            entry.target.classList.add('active');
+            entry.target.classList.add("active");
 
         }
 
     });
 
-}, {
-    threshold: 0.15
+},{
+    threshold:0.2
 });
 
 fadeElements.forEach(el => observer.observe(el));
 
 
 
-// ===============================
-// NAVBAR SCROLL EFFECT
-// ===============================
+/* =========================
+PROCESS TABS
+========================= */
 
-const nav = document.querySelector('nav');
+const processButtons = document.querySelectorAll(".process-buttons button");
+const processCards = document.querySelectorAll(".process-card");
 
-window.addEventListener('scroll', () => {
+processButtons.forEach((button,index) => {
 
-    if(window.scrollY > 50){
+    button.addEventListener("click", () => {
 
-        nav.style.padding = '18px 7%';
-        nav.style.background = 'rgba(239,231,223,0.95)';
-        nav.style.boxShadow = '0 5px 20px rgba(0,0,0,0.05)';
+        processCards.forEach(card => {
+            card.classList.remove("active");
+        });
 
-    } else {
+        processCards[index].classList.add("active");
 
-        nav.style.padding = '28px 7%';
-        nav.style.background = 'rgba(239,231,223,0.82)';
-        nav.style.boxShadow = 'none';
-
-    }
+    });
 
 });
 
 
 
-// ===============================
-// HERO IMAGE FLOATING EFFECT
-// ===============================
+/* =========================
+HERO IMAGE PARALLAX
+========================= */
 
-const heroImage = document.querySelector('.hero-image img');
+const heroImage = document.querySelector(".office-image");
 
-window.addEventListener('scroll', () => {
+window.addEventListener("scroll", () => {
 
-    const scrollY = window.scrollY;
+    let scroll = window.scrollY;
 
     if(heroImage){
 
-        heroImage.style.transform = `translateY(${scrollY * -0.08}px)`;
+        heroImage.style.transform = `translateY(${scroll * 0.08}px) scale(1.02)`;
 
     }
 
@@ -76,26 +93,21 @@ window.addEventListener('scroll', () => {
 
 
 
-// ===============================
-// PROCESS TABS
-// ===============================
+/* =========================
+RIBBON FLOAT ANIMATION
+========================= */
 
-const tabButtons = document.querySelectorAll('.tab-button');
-const tabContents = document.querySelectorAll('.tab-content');
+const ribbons = document.querySelectorAll(".ribbon");
 
-tabButtons.forEach(button => {
+window.addEventListener("mousemove",(e)=>{
 
-    button.addEventListener('click', () => {
+    let x = e.clientX / window.innerWidth;
 
-        const tab = button.dataset.tab;
+    ribbons.forEach((ribbon,index)=>{
 
-        tabContents.forEach(content => {
+        let speed = (index + 1) * 12;
 
-            content.classList.remove('active');
-
-        });
-
-        document.getElementById(tab).classList.add('active');
+        ribbon.style.transform += ` translateX(${x * speed}px)`;
 
     });
 
@@ -103,121 +115,109 @@ tabButtons.forEach(button => {
 
 
 
-// ===============================
-// 3D CARD EFFECT
-// ===============================
+/* =========================
+METHODS SLIDER
+========================= */
 
-const cards = document.querySelectorAll('.process-card');
-
-cards.forEach(card => {
-
-    card.addEventListener('mousemove', (e) => {
-
-        const rect = card.getBoundingClientRect();
-
-        const x = e.clientX - rect.left;
-        const y = e.clientY - rect.top;
-
-        const centerX = rect.width / 2;
-        const centerY = rect.height / 2;
-
-        const rotateX = ((y - centerY) / 30);
-        const rotateY = ((centerX - x) / 30);
-
-        card.style.transform = `
-            rotateX(${rotateX}deg)
-            rotateY(${rotateY}deg)
-            scale(1.02)
-        `;
-
-    });
-
-    card.addEventListener('mouseleave', () => {
-
-        card.style.transform = `
-            rotateX(0deg)
-            rotateY(0deg)
-            scale(1)
-        `;
-
-    });
-
-});
-
-
-
-// ===============================
-// METHODS SLIDER DRAG EFFECT
-// ===============================
-
-const slider = document.querySelector('.methods-slider');
+const slider = document.querySelector(".methods-slider");
 
 let isDown = false;
 let startX;
 let scrollLeft;
 
-if(slider){
-
-slider.addEventListener('mousedown', (e) => {
+slider.addEventListener("mousedown",(e)=>{
 
     isDown = true;
-
-    slider.classList.add('active');
+    slider.classList.add("active");
 
     startX = e.pageX - slider.offsetLeft;
-
     scrollLeft = slider.scrollLeft;
 
 });
 
-slider.addEventListener('mouseleave', () => {
+slider.addEventListener("mouseleave",()=>{
 
     isDown = false;
 
 });
 
-slider.addEventListener('mouseup', () => {
+slider.addEventListener("mouseup",()=>{
 
     isDown = false;
 
 });
 
-slider.addEventListener('mousemove', (e) => {
+slider.addEventListener("mousemove",(e)=>{
 
     if(!isDown) return;
 
     e.preventDefault();
 
     const x = e.pageX - slider.offsetLeft;
-
     const walk = (x - startX) * 2;
 
     slider.scrollLeft = scrollLeft - walk;
 
 });
 
-}
+
+
+/* =========================
+AUTO SLIDE
+========================= */
+
+let autoSlide = setInterval(()=>{
+
+    slider.scrollLeft += 1.2;
+
+    if(
+        slider.scrollLeft + slider.clientWidth 
+        >= slider.scrollWidth
+    ){
+
+        slider.scrollLeft = 0;
+
+    }
+
+},20);
 
 
 
-// ===============================
-// SMOOTH SECTION REVEAL
-// ===============================
+/* =========================
+FLOATING CARD EFFECT
+========================= */
 
-const sections = document.querySelectorAll('section');
+const cards = document.querySelectorAll(".method-card");
 
-window.addEventListener('scroll', () => {
+cards.forEach(card => {
 
-    sections.forEach(section => {
+    card.addEventListener("mousemove",(e)=>{
 
-        const sectionTop = section.getBoundingClientRect().top;
+        const rect = card.getBoundingClientRect();
 
-        if(sectionTop < window.innerHeight - 100){
+        const x = e.clientX - rect.left;
+        const y = e.clientY - rect.top;
 
-            section.style.opacity = '1';
-            section.style.transform = 'translateY(0px)';
+        const rotateY = ((x / rect.width) - 0.5) * 10;
+        const rotateX = ((y / rect.height) - 0.5) * -10;
 
-        }
+        card.style.transform = `
+            perspective(1000px)
+            rotateX(${rotateX}deg)
+            rotateY(${rotateY}deg)
+            translateY(-10px)
+        `;
+
+    });
+
+    card.addEventListener("mouseleave",()=>{
+
+        card.style.transform = `
+            perspective(1000px)
+            rotateX(0deg)
+            rotateY(0deg)
+            translateY(0px)
+        `;
 
     });
 
@@ -225,112 +225,58 @@ window.addEventListener('scroll', () => {
 
 
 
-// ===============================
-// CURSOR GLOW EFFECT
-// ===============================
+/* =========================
+SMOOTH NAVIGATION
+========================= */
 
-const glow = document.createElement('div');
+document.querySelectorAll('nav a').forEach(anchor => {
 
-glow.style.width = '200px';
-glow.style.height = '200px';
+    anchor.addEventListener('click', function (e) {
 
-glow.style.position = 'fixed';
+        e.preventDefault();
 
-glow.style.background = 'rgba(109,80,255,0.12)';
+        const target = document.querySelector(this.getAttribute('href'));
 
-glow.style.borderRadius = '50%';
+        target.scrollIntoView({
+            behavior: 'smooth'
+        });
 
-glow.style.pointerEvents = 'none';
-
-glow.style.filter = 'blur(40px)';
-
-glow.style.zIndex = '0';
-
-glow.style.transform = 'translate(-50%, -50%)';
-
-document.body.appendChild(glow);
-
-window.addEventListener('mousemove', (e) => {
-
-    glow.style.left = e.clientX + 'px';
-    glow.style.top = e.clientY + 'px';
+    });
 
 });
 
 
 
-// ===============================
-// AUTO ACTIVE TAB
-// ===============================
+/* =========================
+PROCESS IMAGE HOVER ZOOM
+========================= */
 
-let currentTab = 0;
+const processImages = document.querySelectorAll(".process-image img");
 
-setInterval(() => {
+processImages.forEach(img => {
 
-    const buttons = document.querySelectorAll('.tab-button');
+    img.addEventListener("mouseenter",()=>{
 
-    currentTab++;
+        img.style.transform = "scale(1.08)";
 
-    if(currentTab >= buttons.length){
+    });
 
-        currentTab = 0;
+    img.addEventListener("mouseleave",()=>{
 
-    }
+        img.style.transform = "scale(1)";
 
-    buttons[currentTab].click();
-
-}, 7000);
-
-
-
-// ===============================
-// FLOATING IMAGE ANIMATION
-// ===============================
-
-const floatingImages = document.querySelectorAll('.process-image img');
-
-floatingImages.forEach((img, index) => {
-
-    let direction = 1;
-
-    setInterval(() => {
-
-        direction *= -1;
-
-        img.style.transform = `translateY(${direction * 12}px)`;
-
-    }, 2500 + index * 500);
+    });
 
 });
 
 
 
-// ===============================
-// TEXT PARALLAX EFFECT
-// ===============================
+/* =========================
+PAGE LOAD ANIMATION
+========================= */
 
-const heroTitle = document.querySelector('.hero-left h1');
+window.addEventListener("load",()=>{
 
-window.addEventListener('scroll', () => {
-
-    if(heroTitle){
-
-        heroTitle.style.transform = `
-            translateY(${window.scrollY * 0.12}px)
-        `;
-
-    }
-
-});
-
-
-
-// ===============================
-// LOADING ANIMATION
-// ===============================
-
-window.addEventListener('load', () => {
-
-    document.body.style.opacity = '1';
+    document.body.style.opacity = "1";
 
 });
