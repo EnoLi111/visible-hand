@@ -1,4 +1,6 @@
-<!DOCTYPE html>
+from pathlib import Path
+
+html = r'''<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
@@ -19,7 +21,6 @@
       --muted:#605b55;
       --line:rgba(29,29,27,.13);
 
-      /* Morandi palette */
       --sage:#9aa796;
       --sage-dark:#707a68;
       --stone:#c9c0b7;
@@ -276,54 +277,47 @@
       line-height:1.25;
     }
 
-    /* HERO VISUAL */
+    /* HERO VISUAL WITH UPLOADED OFFICE IMAGE - CLEAN VERSION */
 
     .hero-art{
       min-height:680px;
       position:relative;
       overflow:hidden;
       border-radius:42px;
-      background:linear-gradient(135deg, rgba(216,201,184,.95), rgba(198,174,170,.45)), var(--paper);
+      background:
+        radial-gradient(circle at 50% 45%, rgba(251,247,241,.95), rgba(216,201,184,.62) 52%, rgba(198,174,170,.35) 100%);
       border:1px solid var(--line);
       box-shadow:0 34px 80px rgba(29,29,27,.07);
+      isolation:isolate;
     }
 
     .office-grid{
-      position:absolute;
-      right:-20px;
-      bottom:0;
-      width:75%;
-      height:56%;
-      border-radius:30px 0 0 0;
-      border:1px solid rgba(29,29,27,.14);
-      background:
-        linear-gradient(90deg, rgba(29,29,27,.07) 1px, transparent 1px) 0 0/62px 100%,
-        linear-gradient(rgba(29,29,27,.07) 1px, transparent 1px) 0 0/100% 54px,
-        rgba(251,247,241,.82);
+      display:none;
     }
 
     .ribbon{
       position:absolute;
       left:-18%;
       width:150%;
-      height:72px;
+      height:62px;
       border-radius:999px;
-      opacity:.78;
+      opacity:.35;
       mix-blend-mode:multiply;
       z-index:2;
     }
 
     .ribbon.one{
-      top:27%;
+      top:34%;
       background:var(--sage);
       transform:rotate(-7deg);
       animation:ribbonOne 7s ease-in-out infinite;
     }
 
     .ribbon.two{
-      top:58%;
+      top:63%;
       background:var(--rose);
-      transform:rotate(6deg);
+      opacity:.18;
+      transform:rotate(5deg);
       animation:ribbonTwo 8s ease-in-out infinite;
     }
 
@@ -333,146 +327,58 @@
     }
 
     @keyframes ribbonTwo{
-      0%,100%{transform:translateX(60px) rotate(6deg);}
-      50%{transform:translateX(-60px) rotate(6deg);}
+      0%,100%{transform:translateX(60px) rotate(5deg);}
+      50%{transform:translateX(-60px) rotate(5deg);}
     }
 
     .note{
       position:absolute;
-      z-index:5;
-      background:var(--paper);
+      z-index:7;
+      background:rgba(251,247,241,.94);
       border:1.7px solid var(--ink);
       border-radius:14px;
       padding:15px 18px;
       font-weight:800;
       box-shadow:7px 7px 0 rgba(29,29,27,.1);
       animation:floatNote 4.5s ease-in-out infinite;
+      white-space:nowrap;
     }
 
-    .note.n1{right:9%;top:14%;transform:rotate(3deg);}
-    .note.n2{left:8%;top:18%;transform:rotate(-6deg);animation-delay:1s;}
-    .note.n3{right:12%;bottom:10%;transform:rotate(-3deg);animation-delay:.4s;}
+    .note.n1{
+      right:8%;
+      top:13%;
+      transform:rotate(3deg);
+    }
+
+    .note.n2{
+      left:8%;
+      top:16%;
+      transform:rotate(-6deg);
+      animation-delay:1s;
+    }
+
+    .note.n3{
+      right:8%;
+      bottom:8%;
+      transform:rotate(-3deg);
+      animation-delay:.4s;
+    }
 
     @keyframes floatNote{
       0%,100%{margin-top:0;}
       50%{margin-top:-12px;}
     }
 
-    .woman{
-      position:absolute;
-      left:8%;
-      bottom:6%;
-      width:48%;
-      height:74%;
-      z-index:4;
-      animation:womanFloat 5s ease-in-out infinite;
-    }
-
-    @keyframes womanFloat{
-      0%,100%{transform:translateY(0);}
-      50%{transform:translateY(-16px);}
-    }
-
-    .woman .hair{
-      position:absolute;
-      top:7%;
-      left:40%;
-      width:120px;
-      height:130px;
-      background:#1f1f1d;
-      border-radius:60% 52% 45% 45%;
-      z-index:2;
-    }
-
-    .woman .face{
-      position:absolute;
-      top:22%;
-      left:47%;
-      width:72px;
-      height:82px;
-      background:#cda891;
-      border-radius:42% 46% 50% 50%;
-      border:3px solid #1f1f1d;
-      z-index:3;
-    }
-
-    .woman .body{
-      position:absolute;
-      left:29%;
-      top:30%;
-      width:190px;
-      height:260px;
-      background:#1f1f1d;
-      border-radius:60px 60px 30px 30px;
-      transform:rotate(-4deg);
-      z-index:2;
-    }
-
-    .woman .shirt{
-      position:absolute;
-      left:35%;
-      top:36%;
-      width:150px;
-      height:190px;
-      background:var(--paper);
-      border:3px solid #1f1f1d;
-      border-radius:45px;
-      z-index:3;
-    }
-
-    .woman .arm{
-      position:absolute;
-      left:60%;
-      top:44%;
-      width:170px;
-      height:34px;
-      background:#cda891;
-      border:3px solid #1f1f1d;
-      border-radius:30px;
-      transform:rotate(-18deg);
-      z-index:4;
-    }
-
-    .woman .laptop{
-      position:absolute;
-      left:50%;
-      top:55%;
-      width:235px;
-      height:150px;
-      background:var(--slate);
-      border:4px solid #1f1f1d;
-      border-radius:18px;
-      transform:rotate(-4deg);
-      z-index:5;
-      box-shadow:12px 12px 0 rgba(29,29,27,.14);
-    }
-
-    .woman .laptop::after{
-      content:"work";
-      position:absolute;
-      inset:0;
-      display:flex;
-      align-items:center;
-      justify-content:center;
-      color:white;
-      font-weight:900;
-      font-size:1.3rem;
-      letter-spacing:.15em;
-    }
-
-
-    /* Canva office women image asset */
-
     .hero-image-wrap{
       position:absolute;
       left:50%;
-      bottom:8%;
-      width:82%;
-      max-width:650px;
+      bottom:10%;
+      width:108%;
+      max-width:850px;
       z-index:4;
       transform:translateX(-50%);
       animation:assetFloat 5s ease-in-out infinite;
-      filter:drop-shadow(0 28px 34px rgba(29,29,27,.17));
+      filter:drop-shadow(0 26px 32px rgba(29,29,27,.14));
     }
 
     .hero-image-asset{
@@ -480,8 +386,8 @@
       width:100%;
       height:auto;
       object-fit:contain;
-      filter:saturate(.72) sepia(.12) contrast(.94) brightness(1.03);
-      mix-blend-mode:multiply;
+      filter:saturate(.82) sepia(.08) contrast(.96) brightness(1.02);
+      mix-blend-mode:normal;
     }
 
     @keyframes assetFloat{
@@ -497,9 +403,10 @@
       content:"";
       position:absolute;
       inset:0;
-      background:linear-gradient(180deg, transparent 72%, rgba(241,235,228,.2));
+      background:
+        linear-gradient(180deg, rgba(251,247,241,.16), transparent 24%, transparent 72%, rgba(241,235,228,.18));
       pointer-events:none;
-      z-index:5;
+      z-index:6;
     }
 
     /* CONTENT */
@@ -1144,8 +1051,14 @@
       .grace{
         grid-template-columns:1fr;
       }
+
       .hero-art{min-height:560px;}
-      .hero-image-wrap{width:78%;bottom:9%;}
+      .hero-image-wrap{
+        width:100%;
+        max-width:760px;
+        bottom:10%;
+      }
+
       .sources-grid{grid-template-columns:repeat(2,1fr);}
       .methods-head{align-items:start;flex-direction:column;}
     }
@@ -1155,11 +1068,17 @@
       nav ul{display:none;}
       .hero{padding:115px 5% 60px;}
       .hero-art{min-height:460px;}
-      .hero-image-wrap{width:88%;bottom:10%;}
-      .note{font-size:.76rem;padding:10px 12px;}
-      .note.n2{left:5%;top:12%;}
+      .hero-image-wrap{
+        width:108%;
+        bottom:11%;
+      }
+      .note{
+        font-size:.76rem;
+        padding:10px 12px;
+      }
+      .note.n2{left:5%;top:10%;}
       .note.n1{right:5%;top:18%;}
-      .note.n3{right:5%;bottom:8%;}
+      .note.n3{right:5%;bottom:7%;}
       .journey-top{align-items:flex-start;flex-direction:column;gap:4px;}
       .journey-line{
         overflow-x:auto;
@@ -1669,4 +1588,8 @@
     });
   </script>
 </body>
-</html>
+</html>'''
+
+path = Path("/mnt/data/index_recommended_clean_office_women.html")
+path.write_text(html, encoding="utf-8")
+print(f"Created {path}")
