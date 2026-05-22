@@ -1688,6 +1688,82 @@
       }
     }
 
+  
+    /* FINAL HERO TRANSPARENT IMAGE FIT */
+
+    .hero-art{
+      min-height:680px !important;
+      position:relative !important;
+      overflow:hidden !important;
+      border-radius:42px !important;
+      background:
+        radial-gradient(circle at 50% 52%, rgba(251,247,241,.98), rgba(232,222,213,.72) 62%, rgba(211,196,185,.34) 100%) !important;
+      border:1px solid var(--line) !important;
+      box-shadow:0 34px 80px rgba(29,29,27,.07) !important;
+      isolation:isolate !important;
+    }
+
+    .hero-soft-panel{
+      position:absolute;
+      inset:30px;
+      border-radius:34px;
+      background:
+        linear-gradient(180deg, rgba(251,247,241,.70), rgba(241,235,228,.16)),
+        radial-gradient(circle at 50% 76%, rgba(154,167,150,.12), transparent 44%) !important;
+      border:1px solid rgba(29,29,27,.055);
+      z-index:1;
+    }
+
+    .office-grid,
+    .ribbon,
+    .note,
+    .bubble-stack{
+      display:none !important;
+    }
+
+    .hero-image-wrap{
+      position:absolute !important;
+      left:50% !important;
+      bottom:6% !important;
+      width:112% !important;
+      max-width:900px !important;
+      z-index:4 !important;
+      transform:translateX(-50%) !important;
+      animation:heroImageRise .85s cubic-bezier(.16,1,.3,1) .15s both, assetFloat 6s ease-in-out 1.1s infinite !important;
+      filter:drop-shadow(0 24px 32px rgba(29,29,27,.12)) !important;
+      pointer-events:none;
+    }
+
+    .hero-image-asset{
+      display:block !important;
+      width:100% !important;
+      height:auto !important;
+      object-fit:contain !important;
+      border:0 !important;
+      border-radius:0 !important;
+      opacity:1 !important;
+      background:transparent !important;
+      mix-blend-mode:normal !important;
+      filter:saturate(.88) sepia(.05) contrast(.96) brightness(1.02) !important;
+    }
+
+    @media(max-width:1000px){
+      .hero-art{ min-height:580px !important; }
+      .hero-image-wrap{
+        width:116% !important;
+        bottom:5% !important;
+      }
+    }
+
+    @media(max-width:720px){
+      .hero-art{ min-height:500px !important; }
+      .hero-soft-panel{ inset:18px; border-radius:28px; }
+      .hero-image-wrap{
+        width:132% !important;
+        bottom:2% !important;
+      }
+    }
+
   </style>
 </head>
 
@@ -1758,7 +1834,7 @@
 
       <div class="hero-image-wrap">
         <img
-          src="office-women-clean.png"
+          src="office-women-transparent.png"
           onerror="this.onerror=null; this.src='office-women.png';"
           alt="Diverse women working together in an office"
           class="hero-image-asset"
