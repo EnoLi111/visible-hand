@@ -1871,6 +1871,99 @@
       }
     }
 
+  
+    /* FINAL HERO ILLUSTRATION: SMALLER, NO EXTRA FRAMES */
+
+    .hero-art{
+      min-height:650px !important;
+      position:relative !important;
+      overflow:visible !important;
+      border-radius:0 !important;
+      background:transparent !important;
+      border:0 !important;
+      box-shadow:none !important;
+      isolation:auto !important;
+    }
+
+    .hero-soft-panel,
+    .office-grid,
+    .ribbon,
+    .note,
+    .bubble-stack,
+    .hero-art::after{
+      display:none !important;
+      content:none !important;
+    }
+
+    .hero-image-wrap{
+      position:absolute !important;
+      left:50% !important;
+      top:50% !important;
+      bottom:auto !important;
+      width:82% !important;
+      max-width:660px !important;
+      z-index:4 !important;
+      transform:translate(-50%, -48%) !important;
+      animation:heroImageRise .85s cubic-bezier(.16,1,.3,1) .15s both, assetFloatSoft 6s ease-in-out 1.1s infinite !important;
+      filter:drop-shadow(0 24px 34px rgba(29,29,27,.10)) !important;
+      pointer-events:none;
+    }
+
+    .hero-image-asset{
+      display:block !important;
+      width:100% !important;
+      height:auto !important;
+      object-fit:contain !important;
+      border:0 !important;
+      border-radius:0 !important;
+      opacity:1 !important;
+      background:transparent !important;
+      mix-blend-mode:normal !important;
+      filter:saturate(.86) sepia(.05) contrast(.96) brightness(1.02) !important;
+    }
+
+    @keyframes heroImageRise{
+      0%{
+        opacity:0;
+        transform:translate(-50%, -42%);
+      }
+      100%{
+        opacity:1;
+        transform:translate(-50%, -48%);
+      }
+    }
+
+    @keyframes assetFloatSoft{
+      0%,100%{
+        transform:translate(-50%, -48%) translateY(0);
+      }
+      50%{
+        transform:translate(-50%, -48%) translateY(-8px);
+      }
+    }
+
+    @media(max-width:1000px){
+      .hero-art{
+        min-height:560px !important;
+      }
+
+      .hero-image-wrap{
+        width:86% !important;
+        max-width:620px !important;
+      }
+    }
+
+    @media(max-width:720px){
+      .hero-art{
+        min-height:420px !important;
+      }
+
+      .hero-image-wrap{
+        width:96% !important;
+        max-width:520px !important;
+      }
+    }
+
   </style>
 </head>
 
@@ -1938,8 +2031,6 @@
     </div>
 
     <div class="hero-art fade-up">
-      <div class="hero-soft-panel"></div>
-
       <div class="hero-image-wrap">
         <img
           src="office-women-transparent.png"
