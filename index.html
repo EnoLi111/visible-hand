@@ -2455,6 +2455,236 @@
       }
     }
 
+  
+    /* BRIGHT-MATTER INSPIRED HERO LAYOUT */
+
+    .hero{
+      min-height:calc(100vh - 86px) !important;
+      display:grid !important;
+      grid-template-columns:1.45fr .75fr !important;
+      align-items:center !important;
+      gap:54px !important;
+      padding:132px 7% 82px !important;
+      background:#f3ede6 !important;
+      position:relative !important;
+      overflow:hidden !important;
+    }
+
+    .hero::before{
+      content:"";
+      position:absolute;
+      width:10px;
+      height:10px;
+      right:7%;
+      top:17%;
+      border-radius:40% 60% 45% 55%;
+      background:var(--sage-dark);
+      box-shadow:
+        0 -16px 0 rgba(117,130,113,.35),
+        14px 0 0 rgba(117,130,113,.25),
+        -13px 0 0 rgba(117,130,113,.20);
+      opacity:.6;
+      transform:rotate(18deg);
+    }
+
+    .hero-copy{
+      max-width:1120px !important;
+      align-self:center !important;
+      position:relative !important;
+      z-index:5 !important;
+    }
+
+    .hero-label{
+      display:none !important;
+    }
+
+    .hero-title-bm{
+      font-family:"Cormorant Garamond", serif !important;
+      font-size:clamp(5.1rem, 7.65vw, 9.35rem) !important;
+      line-height:.92 !important;
+      font-weight:600 !important;
+      letter-spacing:-.055em !important;
+      color:var(--ink) !important;
+      max-width:1120px !important;
+      margin:0 !important;
+    }
+
+    .hero-title-bm span{
+      display:block !important;
+      white-space:nowrap !important;
+    }
+
+    .hero-title-bm em{
+      color:var(--sage-dark) !important;
+      font-style:italic !important;
+      font-weight:500 !important;
+      letter-spacing:-.05em !important;
+      margin:0 .04em !important;
+    }
+
+    .hero-description{
+      margin-top:38px !important;
+      max-width:780px !important;
+      font-size:1.06rem !important;
+      line-height:1.85 !important;
+      color:#5d574f !important;
+    }
+
+    .hero-progress{
+      margin-top:34px !important;
+      max-width:660px !important;
+      padding:20px 24px 18px !important;
+      border-radius:24px !important;
+      background:rgba(251,247,241,.68) !important;
+      border:1px solid rgba(29,29,27,.08) !important;
+      box-shadow:0 14px 34px rgba(29,29,27,.04) !important;
+      backdrop-filter:blur(8px) !important;
+    }
+
+    .hero-progress-top{
+      margin-bottom:16px !important;
+    }
+
+    .hero-progress-top span{
+      font-size:.72rem !important;
+      letter-spacing:.15em !important;
+    }
+
+    .hero-progress-top strong{
+      font-size:.82rem !important;
+      color:#615b54 !important;
+    }
+
+    .progress-line{
+      top:35px !important;
+      left:54px !important;
+      right:54px !important;
+    }
+
+    .step span{
+      width:39px !important;
+      height:39px !important;
+      font-size:.9rem !important;
+    }
+
+    .step small{
+      margin-top:8px !important;
+      font-size:.75rem !important;
+    }
+
+    .hero-art{
+      min-height:610px !important;
+      position:relative !important;
+      overflow:visible !important;
+      border:0 !important;
+      border-radius:0 !important;
+      box-shadow:none !important;
+      background:transparent !important;
+      align-self:center !important;
+    }
+
+    .hero-soft-panel,
+    .office-grid,
+    .ribbon,
+    .note,
+    .bubble-stack,
+    .hero-art::after{
+      display:none !important;
+      content:none !important;
+    }
+
+    .hero-illustration-bm{
+      position:absolute !important;
+      right:-4% !important;
+      bottom:4% !important;
+      width:min(118%, 600px) !important;
+      z-index:3 !important;
+      filter:drop-shadow(0 24px 32px rgba(29,29,27,.10)) !important;
+      animation:bmHeroFloat 6.5s ease-in-out infinite !important;
+    }
+
+    .hero-illustration-bm::before{
+      content:"";
+      position:absolute;
+      inset:22% 8% 0 2%;
+      background:radial-gradient(circle, rgba(154,167,150,.11), transparent 65%);
+      filter:blur(8px);
+      z-index:-1;
+    }
+
+    .hero-image-asset{
+      width:100% !important;
+      height:auto !important;
+      display:block !important;
+      object-fit:contain !important;
+      background:transparent !important;
+      border:0 !important;
+      border-radius:0 !important;
+      filter:saturate(.84) sepia(.06) contrast(.95) brightness(1.03) !important;
+    }
+
+    @keyframes bmHeroFloat{
+      0%,100%{ transform:translateY(0); }
+      50%{ transform:translateY(-9px); }
+    }
+
+    @media(max-width:1180px){
+      .hero{
+        grid-template-columns:1fr !important;
+        gap:20px !important;
+        padding:118px 7% 72px !important;
+      }
+
+      .hero-title-bm{
+        font-size:clamp(4.7rem, 12vw, 8rem) !important;
+      }
+
+      .hero-title-bm span{
+        white-space:normal !important;
+      }
+
+      .hero-art{
+        min-height:360px !important;
+      }
+
+      .hero-illustration-bm{
+        position:relative !important;
+        right:auto !important;
+        bottom:auto !important;
+        margin:0 auto !important;
+        width:min(58%, 520px) !important;
+      }
+    }
+
+    @media(max-width:720px){
+      .hero{
+        padding:108px 5% 66px !important;
+      }
+
+      .hero-title-bm{
+        font-size:clamp(3.4rem, 15.5vw, 5.2rem) !important;
+        letter-spacing:-.045em !important;
+      }
+
+      .hero-description{
+        font-size:.96rem !important;
+        margin-top:28px !important;
+      }
+
+      .hero-progress{
+        padding:18px 18px 16px !important;
+        margin-top:28px !important;
+      }
+
+      .hero-art{
+        min-height:290px !important;
+      }
+
+      .hero-illustration-bm{
+        width:min(82%, 420px) !important;
+      }
+    }
+
   </style>
 </head>
 
@@ -2476,12 +2706,10 @@
   <section class="hero" id="illusion">
     <div class="hero-left fade-up">
       <p class="eyebrow">Gender at Work</p>
-      <h1 class="editorial-title" aria-label="Who gets access to workplace equality?">
-        <span class="title-line title-small">Who gets</span>
-        <span class="title-line title-main">access</span>
-        <span class="title-line title-small title-indent">to</span>
-        <span class="title-line title-accent">workplace</span>
-        <span class="title-line title-accent title-last">equality?</span>
+      <h1 class="hero-title-bm" aria-label="Who gets access to workplace equality?">
+        <span>Who gets access</span>
+        <span>to <em>workplace</em></span>
+        <span>equality?</span>
       </h1>
       <p class="hero-description">
         Workplace equality initiatives often appear inclusive, but access to support is shaped by employment status, organisational visibility, and employer-based systems. This project examines how precarious work is gendered, and why workers outside formal workplace structures may be excluded from existing equality support.
@@ -2525,7 +2753,7 @@
     </div>
 
     <div class="hero-art fade-up">
-      <div class="hero-image-wrap">
+      <div class="hero-illustration-bm">
         <img
           src="office-women-transparent.png"
           onerror="this.onerror=null; this.src='office-women.png';"
@@ -3006,4 +3234,4 @@
     });
   </script>
 </body>
-</html>
+</html>        
